@@ -2,6 +2,7 @@ import React from 'react';
 import { arrayOf, func, string, objectOf, bool, object } from 'prop-types';
 
 import Select from '../Select';
+import Collapse from '../Collapse';
 
 import style from './Search.module.scss';
 
@@ -15,6 +16,8 @@ const Search = ({
   onYearChange,
   onVersionsChange,
   disableSelect,
+  collapsed,
+  onCollapse,
 }) => {
   const formattedVersionOptions = () =>
     versionOptions.map(option => ({
@@ -23,37 +26,39 @@ const Search = ({
     }));
 
   return (
-    <div className={style.wrapper}>
-      <h4>MARCA E MODELO DO CARRO</h4>
-      <Select
-        className={style.select}
-        placeholder="Selecione uma marca"
-        options={brandsOptions}
-        onChange={onBrandChange}
-      />
-      <Select
-        className={style.select}
-        disabled={disableSelect.models}
-        onChange={onModelChange}
-        placeholder="Selecione um modelo"
-        options={modelsOptions}
-      />
-      <h4>ANO E VERSÃO</h4>
-      <Select
-        disabled={disableSelect.year}
-        className={style.select}
-        placeholder="Selecione um ano"
-        onChange={onYearChange}
-        options={yearsOptions}
-      />
-      <Select
-        className={style.select}
-        disabled={disableSelect.versions}
-        placeholder="Selecione a versão do modelo"
-        onChange={onVersionsChange}
-        options={formattedVersionOptions()}
-      />
-    </div>
+    <Collapse collapsed={collapsed} onClick={onCollapse}>
+      <div className={style.wrapper}>
+        <h4>MARCA E MODELO DO CARRO</h4>
+        <Select
+          className={style.select}
+          placeholder="Selecione uma marca"
+          options={brandsOptions}
+          onChange={onBrandChange}
+        />
+        <Select
+          className={style.select}
+          disabled={disableSelect.models}
+          onChange={onModelChange}
+          placeholder="Selecione um modelo"
+          options={modelsOptions}
+        />
+        <h4>ANO E VERSÃO</h4>
+        <Select
+          disabled={disableSelect.year}
+          className={style.select}
+          placeholder="Selecione um ano"
+          onChange={onYearChange}
+          options={yearsOptions}
+        />
+        <Select
+          className={style.select}
+          disabled={disableSelect.versions}
+          placeholder="Selecione a versão do modelo"
+          onChange={onVersionsChange}
+          options={formattedVersionOptions()}
+        />
+      </div>
+    </Collapse>
   );
 };
 
@@ -67,6 +72,8 @@ Search.propTypes = {
   onModelChange: func,
   onYearChange: func,
   onVersionsChange: func,
+  onCollapse: func,
+  collapsed: bool,
 };
 
 export default Search;

@@ -24,6 +24,8 @@ const Home = ({
   years,
   versions,
 }) => {
+  const [collapsed, setCollapsed] = useState(false);
+
   const [disableSelect, setdisabledSelect] = useState({
     brands: true,
     models: true,
@@ -41,6 +43,8 @@ const Home = ({
   useEffect(() => {
     getBrands();
   }, [getBrands]);
+
+  const handleCollapse = () => setCollapsed(!collapsed);
 
   const handleBrandChange = brand => {
     car.brand = brand;
@@ -77,6 +81,8 @@ const Home = ({
         modelsOptions={models}
         yearsOptions={years}
         versionOptions={versions}
+        onCollapse={handleCollapse}
+        collapsed={collapsed}
       />
     </Container>
   );
@@ -94,7 +100,7 @@ Home.propTypes = {
   versions: arrayOf(object),
 };
 
-const mapStateToProps = ({ cars, brands, models, years, versions, car }) => ({
+const mapStateToProps = ({ brands, models, years, versions, car }) => ({
   brands: brands.data,
   models: models.data,
   years: years.data,
