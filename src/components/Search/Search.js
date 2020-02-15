@@ -1,5 +1,5 @@
 import React from 'react';
-import { arrayOf, func, string, objectOf, bool } from 'prop-types';
+import { arrayOf, func, string, objectOf, bool, object } from 'prop-types';
 
 import Select from '../Select';
 
@@ -61,7 +61,7 @@ Search.propTypes = {
   brandsOptions: arrayOf(string),
   modelsOptions: arrayOf(string),
   yearsOptions: arrayOf(string),
-  versionOptions: arrayOf(string),
+  versionOptions: arrayOf(object),
   disableSelect: objectOf(bool),
   onBrandChange: func,
   onModelChange: func,

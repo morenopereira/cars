@@ -4,7 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { func, arrayOf, string, object } from 'prop-types';
 
-import { getBrands, getModels, getYears, getVersions, getCar } from '../../redux/cars';
+import { getCar } from '../../redux/car';
+import { getBrands } from '../../redux/brands';
+import { getModels } from '../../redux/models';
+import { getYears } from '../../redux/years';
+import { getVersions } from '../../redux/versions';
 
 import Container from '../../components/Container';
 import Search from '../../components/Search';
@@ -90,12 +94,12 @@ Home.propTypes = {
   versions: arrayOf(object),
 };
 
-const mapStateToProps = ({ cars }) => ({
-  brands: cars.brands,
-  models: cars.models,
-  years: cars.years,
-  versions: cars.versions,
-  car: cars.car,
+const mapStateToProps = ({ cars, brands, models, years, versions, car }) => ({
+  brands: brands.data,
+  models: models.data,
+  years: years.data,
+  versions: versions.data,
+  car: car.data,
 });
 
 const mapDispatchToProps = dispatch => ({
