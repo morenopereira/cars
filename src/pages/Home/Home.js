@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { func, arrayOf, string, object } from 'prop-types';
+import { func, arrayOf, string, object, objectOf, bool } from 'prop-types';
 
 import { getCar } from '../../redux/car';
 import { getBrands } from '../../redux/brands';
@@ -12,6 +12,8 @@ import { getVersions } from '../../redux/versions';
 
 import Container from '../../components/Container';
 import Search from '../../components/Search';
+import CardDetails from '../../components/CardDetails';
+import Loader from '../../components/Loader';
 
 const Home = ({
   getBrands,
@@ -23,8 +25,11 @@ const Home = ({
   models,
   years,
   versions,
+  car,
+  loading,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
+  console.log(loading, 'loading');
 
   const [disableSelect, setdisabledSelect] = useState({
     brands: true,
@@ -33,7 +38,7 @@ const Home = ({
     versions: true,
   });
 
-  const [car, setCar] = useState({
+  const [item, setitem] = useState({
     brand: '',
     model: '',
     year: '',
@@ -47,26 +52,37 @@ const Home = ({
   const handleCollapse = () => setCollapsed(!collapsed);
 
   const handleBrandChange = brand => {
-    car.brand = brand;
-    getModels(car);
+    item.brand = brand;
+    getModels(item);
     setdisabledSelect({ ...disableSelect, models: false });
   };
 
   const handleModelsChange = model => {
-    car.model = model;
-    getYears(car);
+    item.model = model;
+    getYears(item);
     setdisabledSelect({ ...disableSelect, year: false });
   };
 
   const handleYearChange = year => {
-    car.year = year;
-    getVersions(car);
+    item.year = year;
+    getVersions(item);
     setdisabledSelect({ ...disableSelect, versions: false });
   };
 
   const handleVersionsChange = versionId => {
-    car.versionId = versionId;
-    getCar(car);
+    item.versionId = versionId;
+    getCar(item);
+  };
+
+  const renderContent = () => {
+    if (loading) {
+      return <Loader minHeight />;
+    }
+    if (!loading && Object.keys(car).length > 0) {
+      return <CardDetails car={car} />;
+    }
+
+    return '';
   };
 
   return (
@@ -84,6 +100,7 @@ const Home = ({
         onCollapse={handleCollapse}
         collapsed={collapsed}
       />
+      {renderContent()}
     </Container>
   );
 };
@@ -94,6 +111,8 @@ Home.propTypes = {
   getYears: func,
   getCar: func,
   getVersions: func,
+  loading: bool,
+  car: objectOf(string),
   brands: arrayOf(string),
   models: arrayOf(string),
   years: arrayOf(string),
@@ -106,6 +125,7 @@ const mapStateToProps = ({ brands, models, years, versions, car }) => ({
   years: years.data,
   versions: versions.data,
   car: car.data,
+  loading: car.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

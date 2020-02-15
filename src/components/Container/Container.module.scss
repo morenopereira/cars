@@ -16,24 +16,3 @@
     width: 1170px;
   }
 }
-
-.flex {
-  display: flex;
-}
-
-.column {
-  flex-direction: column;
-}
-
-.center {
-  justify-content: center;
-  align-items: center;
-}
-
-.between {
-  justify-content: space-between;
-}
-
-.end {
-  align-items: flex-end;
-}

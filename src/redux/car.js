@@ -8,6 +8,7 @@ const GET_CAR_ERROR = 'GET_CAR_ERROR';
 const INITIAL_STATE = {
   data: {},
   error: false,
+  loading: false,
 };
 
 export const getCar = car => async dispatch => {
@@ -31,18 +32,21 @@ export function car(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         data: {},
-        error: false,
+        loading: true,
+        error: true,
       };
     case GET_CAR_SUCCESS:
       return {
         ...state,
         data: action.payload,
+        loading: false,
         error: false,
       };
     case GET_CAR_ERROR:
       return {
         ...state,
         data: {},
+        loading: false,
         error: true,
       };
     default:

@@ -28,7 +28,7 @@ const Search = ({
   return (
     <Collapse collapsed={collapsed} onClick={onCollapse}>
       <div className={style.wrapper}>
-        <h4>MARCA E MODELO DO CARRO</h4>
+        <h4 className={style.blockTitle}>MARCA E MODELO DO CARRO</h4>
         <Select
           className={style.select}
           placeholder="Selecione uma marca"
@@ -42,7 +42,7 @@ const Search = ({
           placeholder="Selecione um modelo"
           options={modelsOptions}
         />
-        <h4>ANO E VERSÃO</h4>
+        <h4 className={style.blockTitle}>ANO E VERSÃO</h4>
         <Select
           disabled={disableSelect.year}
           className={style.select}
