@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { func, arrayOf, string, object, objectOf, bool } from 'prop-types';
+import { func, arrayOf, string, object, objectOf, bool, oneOfType, number } from 'prop-types';
 
 import { getCar } from '../../redux/car';
 import { getBrands } from '../../redux/brands';
@@ -14,6 +14,7 @@ import Container from '../../components/Container';
 import Search from '../../components/Search';
 import CardDetails from '../../components/CardDetails';
 import Loader from '../../components/Loader';
+import Title from '../../components/Title';
 
 const Home = ({
   getBrands,
@@ -29,7 +30,6 @@ const Home = ({
   loading,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
-  console.log(loading, 'loading');
 
   const [disableSelect, setdisabledSelect] = useState({
     brands: true,
@@ -87,6 +87,7 @@ const Home = ({
 
   return (
     <Container>
+      <Title>Quanto vale meu carro ?</Title>
       <Search
         disableSelect={disableSelect}
         onBrandChange={handleBrandChange}
@@ -112,7 +113,7 @@ Home.propTypes = {
   getCar: func,
   getVersions: func,
   loading: bool,
-  car: objectOf(string),
+  car: objectOf(oneOfType([string, number])),
   brands: arrayOf(string),
   models: arrayOf(string),
   years: arrayOf(string),

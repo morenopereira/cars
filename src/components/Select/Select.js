@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, string, arrayOf, bool, oneOfType, object } from 'prop-types';
+import { func, string, arrayOf, bool, object, oneOfType } from 'prop-types';
 
 import style from './Select.module.scss';
 
@@ -33,7 +33,7 @@ const Select = ({ onChange, placeholder, disabled, options = [], className }) =>
 
 Select.propTypes = {
   onChange: func,
-  options: arrayOf(oneOfType(string, object)),
+  options: arrayOf(oneOfType([string, object])),
   placeholder: string,
   disabled: bool,
   className: string,

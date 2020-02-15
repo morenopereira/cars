@@ -12,7 +12,7 @@ const Collapse = ({ children, collapsed, onClick }) => {
         {children}
       </div>
       <button type="button" onClick={onClick} className={style.btn}>
-        <img className={collapsed && style.down} alt="Arrow" src={arrow} />
+        <img className={collapsed ? style.down : undefined} alt="Arrow" src={arrow} />
       </button>
     </>
   );

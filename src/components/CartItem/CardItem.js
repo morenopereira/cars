@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, bool } from 'prop-types';
+import { string, bool, oneOfType, number } from 'prop-types';
 
 import currenyFormat from '../../utils/currencyFormat';
 
@@ -21,7 +21,7 @@ const CardItem = ({ label, field, price }) => (
 
 CardItem.propTypes = {
   label: string,
-  field: string,
+  field: oneOfType([string, number]),
   price: bool,
 };
 
