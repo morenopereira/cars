@@ -15,6 +15,11 @@
     "prefer-promise-reject-errors": ["off"],
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": ["warn"],
-    "no-return-assign": ["off"]
+    "no-return-assign": ["off"],
+    "no-shadow": "off",
+    "react/require-default-props": [
+      0,
+      { "forbidDefaultForRequired": false, "ignoreFunctionalComponents": true }
+    ]
   }
 }

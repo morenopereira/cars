@@ -1,0 +1,39 @@
+.wrapper {
+  height: calc(100vh - 30px);
+  padding: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 768px) {
+    width: 750px;
+  }
+
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.end {
+  align-items: flex-end;
+}
