@@ -3,9 +3,9 @@ import { func, string, arrayOf, bool, object, oneOfType } from 'prop-types';
 
 import style from './Select.module.scss';
 
-const Select = ({ onChange, placeholder, disabled, options = [], className }) => {
+const Select = ({ onChange, placeholder, disabled, options = [], className, name }) => {
   const handleChange = e => {
-    if (onChange) onChange(e.target.value);
+    if (onChange) onChange(e.target.name, e.target.value);
   };
 
   return (
@@ -13,6 +13,7 @@ const Select = ({ onChange, placeholder, disabled, options = [], className }) =>
       disabled={disabled}
       className={`${style.wrapper} ${className} ${disabled && style.disabled}`}
       onChange={handleChange}
+      name={name}
     >
       <>
         <option disabled selected hidden>
@@ -37,6 +38,7 @@ Select.propTypes = {
   placeholder: string,
   disabled: bool,
   className: string,
+  name: string,
 };
 
 export default Select;

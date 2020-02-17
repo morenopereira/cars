@@ -38,43 +38,47 @@ const Home = ({
     versions: true,
   });
 
-  const [item, setitem] = useState({
+  const [state, setstate] = useState({
     brand: '',
     model: '',
     year: '',
-    version: '',
+    versionId: '',
   });
 
   useEffect(() => {
     getBrands();
   }, [getBrands]);
 
+  useEffect(() => {
+    if (state.brand.length >= 1) {
+      getModels(state);
+      setdisabledSelect({ ...disableSelect, models: false });
+    }
+  }, [state.brand, getModels]);
+
+  useEffect(() => {
+    if (state.model.length >= 1) {
+      getYears(state);
+      setdisabledSelect({ ...disableSelect, year: false });
+    }
+  }, [state.model, getYears]);
+
+  useEffect(() => {
+    if (state.year.length >= 1) {
+      getVersions(state);
+      setdisabledSelect({ ...disableSelect, versions: false });
+    }
+  }, [state.year, getVersions]);
+
+  useEffect(() => {
+    if (state.versionId.length >= 1) getCar(state);
+  }, [state.versionId, getCar]);
+
   const handleCollapse = () => setCollapsed(!collapsed);
 
-  const handleBrandChange = brand => {
-    item.brand = brand;
-    getModels(item);
-    setdisabledSelect({ ...disableSelect, models: false });
-  };
+  const onChange = (name, value) => setstate({ ...state, [name]: value });
 
-  const handleModelsChange = model => {
-    item.model = model;
-    getYears(item);
-    setdisabledSelect({ ...disableSelect, year: false });
-  };
-
-  const handleYearChange = year => {
-    item.year = year;
-    getVersions(item);
-    setdisabledSelect({ ...disableSelect, versions: false });
-  };
-
-  const handleVersionsChange = versionId => {
-    item.versionId = versionId;
-    getCar(item);
-  };
-
-  const renderContent = () => {
+  const renderResult = () => {
     if (loading) {
       return <Loader minHeight />;
     }
@@ -90,10 +94,7 @@ const Home = ({
       <Title>Quanto vale meu carro ?</Title>
       <Search
         disableSelect={disableSelect}
-        onBrandChange={handleBrandChange}
-        onModelChange={handleModelsChange}
-        onYearChange={handleYearChange}
-        onVersionsChange={handleVersionsChange}
+        onChange={onChange}
         brandsOptions={brands}
         modelsOptions={models}
         yearsOptions={years}
@@ -101,7 +102,7 @@ const Home = ({
         onCollapse={handleCollapse}
         collapsed={collapsed}
       />
-      {renderContent()}
+      {renderResult()}
     </Container>
   );
 };

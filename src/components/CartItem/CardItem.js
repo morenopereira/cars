@@ -6,7 +6,8 @@ import currenyFormat from '../../utils/currencyFormat';
 import style from './CardItem.module.scss';
 
 const renderField = (field, price) => {
-  if (field === undefined || field === null || field.length === 0) return '-';
+  const emptyfield = field === undefined || field === null || field.length === 0;
+  if (emptyfield) return '-';
   if (price) return currenyFormat(field);
 
   return field;
