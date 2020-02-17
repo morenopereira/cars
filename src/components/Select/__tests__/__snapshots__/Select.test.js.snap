@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> renders correctly 1`] = `
+<select
+  className="wrapper undefined false"
+  data-testid="select"
+  disabled={false}
+  onChange={[Function]}
+>
+  <option
+    disabled={true}
+    hidden={true}
+    selected={true}
+  >
+    
+  </option>
+  <option
+    value="test"
+  >
+    test
+  </option>
+</select>
+`;

@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> renders correctly 1`] = `
+Array [
+  <div
+    className="wrapper collapse"
+  >
+    <div
+      className="wrapper"
+    >
+      <h4
+        className="blockTitle"
+      >
+        MARCA E MODELO DO CARRO
+      </h4>
+      <select
+        className="wrapper select undefined"
+        data-testid="select"
+        name="brand"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione uma marca
+        </option>
+      </select>
+      <select
+        className="wrapper select undefined"
+        data-testid="select"
+        name="model"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione um modelo
+        </option>
+      </select>
+      <h4
+        className="blockTitle"
+      >
+        ANO E VERSÃO
+      </h4>
+      <select
+        className="wrapper select undefined"
+        data-testid="select"
+        name="year"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione um ano
+        </option>
+      </select>
+      <select
+        className="wrapper select undefined"
+        data-testid="select"
+        name="versionId"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione a versão do modelo
+        </option>
+      </select>
+    </div>
+  </div>,
+  <button
+    className="btn"
+    type="button"
+  >
+    <img
+      alt="Arrow"
+      src="arrow.svg"
+    />
+  </button>,
+]
+`;

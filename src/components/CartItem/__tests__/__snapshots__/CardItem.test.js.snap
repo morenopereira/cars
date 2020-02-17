@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardItem /> renders correctly 1`] = `
+<li
+  className="item"
+>
+  <span>
+    test
+  </span>
+  <strong>
+    R$ NaN
+  </strong>
+</li>
+`;

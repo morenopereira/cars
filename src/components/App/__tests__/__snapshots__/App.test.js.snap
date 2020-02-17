@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<main
+  className="wrapper"
+>
+  <h1
+    className="title"
+  >
+    Quanto vale meu carro ?
+  </h1>
+  <div
+    className="wrapper collapse"
+  >
+    <div
+      className="wrapper"
+    >
+      <h4
+        className="blockTitle"
+      >
+        MARCA E MODELO DO CARRO
+      </h4>
+      <select
+        className="wrapper select undefined"
+        data-testid="select"
+        name="brand"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione uma marca
+        </option>
+      </select>
+      <select
+        className="wrapper select disabled"
+        data-testid="select"
+        disabled={true}
+        name="model"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione um modelo
+        </option>
+      </select>
+      <h4
+        className="blockTitle"
+      >
+        ANO E VERSÃO
+      </h4>
+      <select
+        className="wrapper select disabled"
+        data-testid="select"
+        disabled={true}
+        name="year"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione um ano
+        </option>
+      </select>
+      <select
+        className="wrapper select disabled"
+        data-testid="select"
+        disabled={true}
+        name="versionId"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          hidden={true}
+          selected={true}
+        >
+          Selecione a versão do modelo
+        </option>
+      </select>
+    </div>
+  </div>
+  <button
+    className="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt="Arrow"
+      src="arrow.svg"
+    />
+  </button>
+  
+</main>
+`;
