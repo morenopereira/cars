@@ -14,10 +14,11 @@ const Select = ({ onChange, placeholder, disabled, options = [], className, name
       className={`${style.wrapper} ${className} ${disabled && style.disabled}`}
       onChange={handleChange}
       name={name}
+      defaultValue="default"
       data-testid="select"
     >
       <>
-        <option disabled selected hidden>
+        <option value="default" disabled hidden>
           {placeholder}
         </option>
         {options.map(option => (
