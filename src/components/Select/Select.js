@@ -18,9 +18,7 @@ const Select = ({ onChange, placeholder, disabled, options = [], className, name
       data-testid="select"
     >
       <>
-        <option value="default" disabled hidden>
-          {placeholder}
-        </option>
+        <option value="default">{placeholder}</option>
         {options.map(option => (
           <option
             key={option.value ? option.value : option}

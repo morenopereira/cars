@@ -4,6 +4,7 @@ import { apiRoute } from '../constants';
 const GET_VERSIONS_START = 'GET_VERSIONS_START';
 const GET_VERSIONS_SUCCESS = 'GET_VERSIONS_SUCCESS';
 const GET_VERSIONS_ERROR = 'GET_VERSIONS_ERROR';
+const CLEAR_VERSIONS = 'CLEAR_VERSIONS';
 
 const INITIAL_STATE = {
   data: [],
@@ -13,16 +14,20 @@ const INITIAL_STATE = {
 export const getVersions = car => async dispatch => {
   dispatch({ type: GET_VERSIONS_START });
   try {
-    const { main } = apiRoute;
+    const { base } = apiRoute;
 
     const { data } = await api(
-      `${main}/brands/${car.brand}/models/${car.model}/years/${car.year}/versions`,
+      `${base}/brands/${car.brand}/models/${car.model}/years/${car.year}/versions`,
     );
 
     dispatch({ type: GET_VERSIONS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: GET_VERSIONS_ERROR });
   }
+};
+
+export const clearVersions = () => dispatch => {
+  dispatch({ type: CLEAR_VERSIONS });
 };
 
 export function versions(state = INITIAL_STATE, action = {}) {
@@ -44,6 +49,12 @@ export function versions(state = INITIAL_STATE, action = {}) {
         ...state,
         data: [],
         error: true,
+      };
+    case CLEAR_VERSIONS:
+      return {
+        ...state,
+        data: [],
+        error: false,
       };
     default:
       return state;

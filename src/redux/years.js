@@ -6,6 +6,7 @@ import removeRepetitions from '../utils/removeRepetitions';
 const GET_YEARS_START = 'GET_YEARS_START';
 const GET_YEARS_SUCCESS = 'GET_YEARS_SUCCESS';
 const GET_YEARS_ERROR = 'GET_YEARS_ERROR';
+const CLEAR_YEARS = 'CLEAR_YEARS';
 
 const INITIAL_STATE = {
   data: [],
@@ -15,14 +16,18 @@ const INITIAL_STATE = {
 export const getYears = car => async dispatch => {
   dispatch({ type: GET_YEARS_START });
   try {
-    const { main } = apiRoute;
+    const { base } = apiRoute;
 
-    const { data } = await api(`${main}/brands/${car.brand}/models/${car.model}/years/${car.year}`);
+    const { data } = await api(`${base}/brands/${car.brand}/models/${car.model}/years/${car.year}`);
 
     dispatch({ type: GET_YEARS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: GET_YEARS_ERROR });
   }
+};
+
+export const clearYears = () => dispatch => {
+  dispatch({ type: CLEAR_YEARS });
 };
 
 export function years(state = INITIAL_STATE, action = {}) {
@@ -44,6 +49,12 @@ export function years(state = INITIAL_STATE, action = {}) {
         ...state,
         data: [],
         error: true,
+      };
+    case CLEAR_YEARS:
+      return {
+        ...state,
+        data: [],
+        error: false,
       };
     default:
       return state;

@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { func, arrayOf, string, object, objectOf, bool, oneOfType, number } from 'prop-types';
 
-import { getCar } from '../../redux/car';
+import { getCarDetails, clearCardDetails } from '../../redux/carDetails';
 import { getBrands } from '../../redux/brands';
 import { getModels } from '../../redux/models';
-import { getYears } from '../../redux/years';
-import { getVersions } from '../../redux/versions';
+import { getYears, clearYears } from '../../redux/years';
+import { getVersions, clearVersions } from '../../redux/versions';
 
 import Container from '../../components/Container';
 import Search from '../../components/Search';
@@ -16,29 +16,38 @@ import CardDetails from '../../components/CardDetails';
 import Loader from '../../components/Loader';
 import Title from '../../components/Title';
 
+const disableSelectDict = {
+  brand: 'model',
+  model: 'year',
+  year: 'versionId',
+};
+
 const Home = ({
   getBrands,
   getModels,
   getYears,
   getVersions,
-  getCar,
+  clearYears,
+  clearVersions,
+  clearCardDetails,
+  getCarDetails,
   brands,
   models,
   years,
   versions,
-  car,
-  loading,
+  carDetails,
+  loadingCarDetails,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const [disableSelect, setdisabledSelect] = useState({
-    brands: true,
-    models: true,
+    brand: true,
+    model: true,
     year: true,
-    versions: true,
+    versionId: true,
   });
 
-  const [state, setstate] = useState({
+  const [car, setCar] = useState({
     brand: '',
     model: '',
     year: '',
@@ -50,43 +59,46 @@ const Home = ({
   }, [getBrands]);
 
   useEffect(() => {
-    if (state.brand.length >= 1) {
-      getModels(state);
-      setdisabledSelect({ ...disableSelect, models: false });
+    if (car.year.length >= 1) {
+      clearYears();
+      clearVersions();
+      clearCardDetails();
+      setCar({ ...car, year: '', versionId: '' });
     }
-  }, [state.brand, getModels]);
+
+    if (car.brand.length >= 1) getModels(car);
+  }, [car.brand, getModels]);
 
   useEffect(() => {
-    if (state.model.length >= 1) {
-      getYears(state);
-      setdisabledSelect({ ...disableSelect, year: false });
-    }
-  }, [state.model, getYears]);
+    if (car.model.length >= 1) getYears(car);
+  }, [car.model, getYears]);
 
   useEffect(() => {
-    if (state.year.length >= 1) {
-      getVersions(state);
-      setdisabledSelect({ ...disableSelect, versions: false });
-    }
-  }, [state.year, getVersions]);
+    if (car.year.length >= 1) getVersions(car);
+  }, [car.year, getVersions]);
 
   useEffect(() => {
-    if (state.versionId.length >= 1) getCar(state);
-  }, [state.versionId, getCar]);
+    if (car.versionId.length >= 1) getCarDetails(car);
+  }, [car.versionId, getCarDetails]);
 
   const handleCollapse = () => setCollapsed(!collapsed);
 
-  const onChange = (name, value) => setstate({ ...state, [name]: value });
+  const enabledSelect = select => setdisabledSelect({ ...disableSelect, [select]: false });
+
+  const onChange = (name, value) => {
+    setCar({ ...car, [name]: value });
+    enabledSelect(disableSelectDict[name]);
+  };
 
   const renderResult = () => {
-    if (loading) {
+    if (loadingCarDetails) {
       return <Loader minHeight />;
     }
-    if (!loading && Object.keys(car).length > 0) {
-      return <CardDetails car={car} />;
+    if (!loadingCarDetails && Object.keys(carDetails).length > 0) {
+      return <CardDetails details={carDetails} />;
     }
 
-    return '';
+    return null;
   };
 
   return (
@@ -111,23 +123,26 @@ Home.propTypes = {
   getBrands: func,
   getModels: func,
   getYears: func,
-  getCar: func,
+  getCarDetails: func,
   getVersions: func,
-  loading: bool,
-  car: objectOf(oneOfType([string, number])),
+  clearYears: func,
+  clearVersions: func,
+  clearCardDetails: func,
+  loadingCarDetails: bool,
+  carDetails: objectOf(oneOfType([string, number])),
   brands: arrayOf(string),
   models: arrayOf(string),
   years: arrayOf(string),
   versions: arrayOf(object),
 };
 
-const mapStateToProps = ({ brands, models, years, versions, car }) => ({
+const mapStateToProps = ({ brands, models, years, versions, carDetails }) => ({
   brands: brands.data,
   models: models.data,
   years: years.data,
   versions: versions.data,
-  car: car.data,
-  loading: car.loading,
+  carDetails: carDetails.data,
+  loadingCarDetails: carDetails.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -135,7 +150,10 @@ const mapDispatchToProps = dispatch => ({
   getModels: bindActionCreators(getModels, dispatch),
   getYears: bindActionCreators(getYears, dispatch),
   getVersions: bindActionCreators(getVersions, dispatch),
-  getCar: bindActionCreators(getCar, dispatch),
+  getCarDetails: bindActionCreators(getCarDetails, dispatch),
+  clearYears: bindActionCreators(clearYears, dispatch),
+  clearVersions: bindActionCreators(clearVersions, dispatch),
+  clearCardDetails: bindActionCreators(clearCardDetails, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

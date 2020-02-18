@@ -13,9 +13,9 @@ const INITIAL_STATE = {
 export const getBrands = () => async dispatch => {
   dispatch({ type: GET_BRANDS_START });
   try {
-    const { main } = apiRoute;
+    const { base } = apiRoute;
 
-    const { data } = await api(`${main}/brands`);
+    const { data } = await api(`${base}/brands`);
 
     dispatch({ type: GET_BRANDS_SUCCESS, payload: data });
   } catch (error) {

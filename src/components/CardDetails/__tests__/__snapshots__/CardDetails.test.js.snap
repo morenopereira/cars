@@ -11,7 +11,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Marca
     </span>
     <strong>
-      VOLKSWAGEN
+      -
     </strong>
   </li>
   <li
@@ -21,7 +21,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Modelo
     </span>
     <strong>
-      POLO
+      -
     </strong>
   </li>
   <li
@@ -31,7 +31,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Versão
     </span>
     <strong>
-      1.6 MSI TOTAL FLEX MANUAL
+      -
     </strong>
   </li>
   <li
@@ -41,7 +41,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Ano
     </span>
     <strong>
-      2018
+      -
     </strong>
   </li>
   <li
@@ -51,7 +51,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Km médio
     </span>
     <strong>
-      24647
+      -
     </strong>
   </li>
   <li
@@ -61,7 +61,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Preço tabela FIPE
     </span>
     <strong>
-      R$ 50,639.00
+      -
     </strong>
   </li>
   <li
@@ -71,7 +71,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Preço mínimo:
     </span>
     <strong>
-      R$ 43,900.00
+      -
     </strong>
   </li>
   <li
@@ -81,7 +81,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Preço médio:
     </span>
     <strong>
-      R$ 50,596.00
+      -
     </strong>
   </li>
   <li
@@ -91,7 +91,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Preço máximo:
     </span>
     <strong>
-      R$ 59,990.00
+      -
     </strong>
   </li>
   <li
@@ -101,7 +101,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Piso preço médio:
     </span>
     <strong>
-      R$ 48,066.00
+      -
     </strong>
   </li>
   <li
@@ -111,7 +111,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Piso preço médio volanty:
     </span>
     <strong>
-      R$ 44,524.00
+      -
     </strong>
   </li>
   <li
@@ -121,7 +121,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Teto preço médio volanty:
     </span>
     <strong>
-      R$ 46,042.00
+      -
     </strong>
   </li>
   <li
@@ -131,7 +131,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Teto preço concessionária:
     </span>
     <strong>
-      R$ 40,477.00
+      -
     </strong>
   </li>
   <li
@@ -141,7 +141,7 @@ exports[`<CardDetails /> renders correctly 1`] = `
       Piso preço concessionária:
     </span>
     <strong>
-      R$ 35,417.00
+      -
     </strong>
   </li>
 </ul>

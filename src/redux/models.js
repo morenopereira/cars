@@ -13,9 +13,9 @@ const INITIAL_STATE = {
 export const getModels = car => async dispatch => {
   dispatch({ type: GET_MODELS_START });
   try {
-    const { main } = apiRoute;
+    const { base } = apiRoute;
 
-    const { data } = await api(`${main}/brands/${car.brand}/models`);
+    const { data } = await api(`${base}/brands/${car.brand}/models`);
 
     dispatch({ type: GET_MODELS_SUCCESS, payload: data });
   } catch (error) {

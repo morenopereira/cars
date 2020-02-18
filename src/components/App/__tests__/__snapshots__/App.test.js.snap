@@ -18,18 +18,17 @@ exports[`renders correctly 1`] = `
       <h4
         className="blockTitle"
       >
-        MARCA E MODELO DO CARRO
+        Marca e modelo do carro
       </h4>
       <select
         className="wrapper select undefined"
         data-testid="select"
+        defaultValue="default"
         name="brand"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
           Selecione uma marca
         </option>
@@ -37,14 +36,13 @@ exports[`renders correctly 1`] = `
       <select
         className="wrapper select disabled"
         data-testid="select"
+        defaultValue="default"
         disabled={true}
         name="model"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
           Selecione um modelo
         </option>
@@ -52,34 +50,32 @@ exports[`renders correctly 1`] = `
       <h4
         className="blockTitle"
       >
-        ANO E VERSÃO
+        Ano e versão
       </h4>
       <select
         className="wrapper select disabled"
         data-testid="select"
+        defaultValue="default"
         disabled={true}
         name="year"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
-          Selecione um ano
+          Selecione o ano
         </option>
       </select>
       <select
         className="wrapper select disabled"
         data-testid="select"
+        defaultValue="default"
         disabled={true}
         name="versionId"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
           Selecione a versão do modelo
         </option>
@@ -96,6 +92,5 @@ exports[`renders correctly 1`] = `
       src="arrow.svg"
     />
   </button>
-  
 </main>
 `;

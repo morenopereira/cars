@@ -4,13 +4,12 @@ exports[`<Select /> renders correctly 1`] = `
 <select
   className="wrapper undefined false"
   data-testid="select"
+  defaultValue="default"
   disabled={false}
   onChange={[Function]}
 >
   <option
-    disabled={true}
-    hidden={true}
-    selected={true}
+    value="default"
   >
     
   </option>

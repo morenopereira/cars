@@ -11,18 +11,17 @@ Array [
       <h4
         className="blockTitle"
       >
-        MARCA E MODELO DO CARRO
+        Marca e modelo do carro
       </h4>
       <select
         className="wrapper select undefined"
         data-testid="select"
+        defaultValue="default"
         name="brand"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
           Selecione uma marca
         </option>
@@ -30,13 +29,12 @@ Array [
       <select
         className="wrapper select undefined"
         data-testid="select"
+        defaultValue="default"
         name="model"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
           Selecione um modelo
         </option>
@@ -44,32 +42,30 @@ Array [
       <h4
         className="blockTitle"
       >
-        ANO E VERSÃO
+        Ano e versão
       </h4>
       <select
         className="wrapper select undefined"
         data-testid="select"
+        defaultValue="default"
         name="year"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
-          Selecione um ano
+          Selecione o ano
         </option>
       </select>
       <select
         className="wrapper select undefined"
         data-testid="select"
+        defaultValue="default"
         name="versionId"
         onChange={[Function]}
       >
         <option
-          disabled={true}
-          hidden={true}
-          selected={true}
+          value="default"
         >
           Selecione a versão do modelo
         </option>

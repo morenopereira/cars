@@ -3,5 +3,5 @@ export const routes = {
 };
 
 export const apiRoute = {
-  main: 'https://volanty-price-api.herokuapp.com',
+  base: 'https://volanty-price-api.herokuapp.com',
 };
