@@ -16,6 +16,7 @@
   border-radius: 4px;
   background: $muted-color;
   border: 1px solid transparent;
+  min-width: 100px;
 
   &:hover {
     border: 1px solid $primary-color;
