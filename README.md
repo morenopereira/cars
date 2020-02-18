@@ -1,18 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cars App
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Example project of the consumption of an API, using React, SCSS Module and Docker.
 
-### `npm start`
+## Dependencies
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js 10+
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Development
 
-### `npm test`
+1. `cp .env.default .env` (And alter vars as needed)
+2. `npm install` or `yarn`
+3. `npm start` or `yarn start`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running the project on Docker
+
+1. `docker build -t cars-app .`
+1. `docker run -p 3000:3000 -d cars-app`
+
+## Running tests
+
+- `npm run test` or `yarn test`
+
+## Scripts
+
+- `start` - Starts development server
+- `build` - Builds the application assets for production
+- `test` - Runs all unit tests
+- `lint` - Run lint
+- `storybook` - Run storybook
