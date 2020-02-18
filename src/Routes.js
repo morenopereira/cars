@@ -2,7 +2,7 @@ import React from 'react';
 import { object } from 'prop-types';
 import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
 
-import { routes } from './constants';
+import routes from './config/constants';
 
 import Home from './pages/Home/Home';
 

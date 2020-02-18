@@ -1,5 +1,4 @@
 import api from '../services/api';
-import { apiRoute } from '../constants';
 
 const GET_MODELS_START = 'GET_MODELS_START';
 const GET_MODELS_SUCCESS = 'GET_MODELS_SUCCESS';
@@ -13,9 +12,7 @@ const INITIAL_STATE = {
 export const getModels = car => async dispatch => {
   dispatch({ type: GET_MODELS_START });
   try {
-    const { base } = apiRoute;
-
-    const { data } = await api(`${base}/brands/${car.brand}/models`);
+    const { data } = await api(`/brands/${car.brand}/models`);
 
     dispatch({ type: GET_MODELS_SUCCESS, payload: data });
   } catch (error) {
@@ -23,7 +20,7 @@ export const getModels = car => async dispatch => {
   }
 };
 
-export function models(state = INITIAL_STATE, action = {}) {
+export const models = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case GET_MODELS_START:
       return {
@@ -46,4 +43,4 @@ export function models(state = INITIAL_STATE, action = {}) {
     default:
       return state;
   }
-}
+};

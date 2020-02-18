@@ -4,17 +4,17 @@ import { bindActionCreators } from 'redux';
 
 import { func, arrayOf, string, object, objectOf, bool, oneOfType, number } from 'prop-types';
 
-import { getCarDetails, clearCardDetails } from '../../redux/carDetails';
 import { getBrands } from '../../redux/brands';
 import { getModels } from '../../redux/models';
-import { getYears, clearYears } from '../../redux/years';
-import { getVersions, clearVersions } from '../../redux/versions';
+import { getCarDetails, cleanCarDetails } from '../../redux/carDetails';
+import { getYears, cleanYears } from '../../redux/years';
+import { getVersions, cleanVersions } from '../../redux/versions';
 
 import Container from '../../components/Container';
+import Title from '../../components/Title';
 import Search from '../../components/Search';
 import CardDetails from '../../components/CardDetails';
 import Loader from '../../components/Loader';
-import Title from '../../components/Title';
 
 const disableSelectDict = {
   brand: 'model',
@@ -27,9 +27,9 @@ const Home = ({
   getModels,
   getYears,
   getVersions,
-  clearYears,
-  clearVersions,
-  clearCardDetails,
+  cleanYears,
+  cleanVersions,
+  cleanCarDetails,
   getCarDetails,
   brands,
   models,
@@ -60,9 +60,9 @@ const Home = ({
 
   useEffect(() => {
     if (car.year.length >= 1) {
-      clearYears();
-      clearVersions();
-      clearCardDetails();
+      cleanYears();
+      cleanVersions();
+      cleanCarDetails();
       setCar({ ...car, year: '', versionId: '' });
     }
 
@@ -125,9 +125,9 @@ Home.propTypes = {
   getYears: func,
   getCarDetails: func,
   getVersions: func,
-  clearYears: func,
-  clearVersions: func,
-  clearCardDetails: func,
+  cleanYears: func,
+  cleanVersions: func,
+  cleanCarDetails: func,
   loadingCarDetails: bool,
   carDetails: objectOf(oneOfType([string, number])),
   brands: arrayOf(string),
@@ -151,9 +151,9 @@ const mapDispatchToProps = dispatch => ({
   getYears: bindActionCreators(getYears, dispatch),
   getVersions: bindActionCreators(getVersions, dispatch),
   getCarDetails: bindActionCreators(getCarDetails, dispatch),
-  clearYears: bindActionCreators(clearYears, dispatch),
-  clearVersions: bindActionCreators(clearVersions, dispatch),
-  clearCardDetails: bindActionCreators(clearCardDetails, dispatch),
+  cleanYears: bindActionCreators(cleanYears, dispatch),
+  cleanVersions: bindActionCreators(cleanVersions, dispatch),
+  cleanCarDetails: bindActionCreators(cleanCarDetails, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
