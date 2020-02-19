@@ -16,11 +16,10 @@ const Search = ({
   collapsed,
   onCollapse,
 }) => {
-  const formattedVersionOptions = () =>
-    versionOptions.map(option => ({
-      value: option.versionId,
-      label: option.version,
-    }));
+  const formattedVersionOptions = versionOptions.map(option => ({
+    value: option.versionId,
+    label: option.version,
+  }));
 
   return (
     <Collapse collapsed={collapsed} onClick={onCollapse}>
@@ -55,7 +54,7 @@ const Search = ({
           disabled={disableSelect.versionId}
           placeholder="Selecione a versão do modelo"
           onChange={onChange}
-          options={formattedVersionOptions()}
+          options={formattedVersionOptions}
           name="versionId"
         />
       </div>

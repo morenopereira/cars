@@ -67,7 +67,7 @@ const Home = ({
     }
 
     if (car.brand.length >= 1) getModels(car);
-  }, [car.brand, getModels]);
+  }, [car.brand, getModels, cleanYears, cleanVersions, cleanCarDetails]);
 
   useEffect(() => {
     if (car.model.length >= 1) getYears(car);
