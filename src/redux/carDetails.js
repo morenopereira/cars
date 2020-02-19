@@ -1,4 +1,5 @@
 import api from '../services/api';
+import { baseApiUrl } from '../config/constants';
 
 const GET_CAR_DETAILS_START = 'GET_CAR_DETAILS_START';
 const GET_CAR_DETAILS_SUCCESS = 'GET_CAR_DETAILS_SUCCESS';
@@ -15,7 +16,7 @@ export const getCarDetails = car => async dispatch => {
   dispatch({ type: GET_CAR_DETAILS_START });
   try {
     const { data } = await api(
-      `/brands/${car.brand}/models/${car.model}/years/${car.year}/versions/${car.versionId}`,
+      `${baseApiUrl}/brands/${car.brand}/models/${car.model}/years/${car.year}/versions/${car.versionId}`,
     );
 
     dispatch({ type: GET_CAR_DETAILS_SUCCESS, payload: data });

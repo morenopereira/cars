@@ -1,4 +1,5 @@
 import api from '../services/api';
+import { baseApiUrl } from '../config/constants';
 
 import removeRepetitions from '../utils/removeRepetitions';
 
@@ -15,7 +16,9 @@ const INITIAL_STATE = {
 export const getYears = car => async dispatch => {
   dispatch({ type: GET_YEARS_START });
   try {
-    const { data } = await api(`/brands/${car.brand}/models/${car.model}/years/${car.year}`);
+    const { data } = await api(
+      `${baseApiUrl}/brands/${car.brand}/models/${car.model}/years/${car.year}`,
+    );
 
     dispatch({ type: GET_YEARS_SUCCESS, payload: data.sort() });
   } catch (error) {

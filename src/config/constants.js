@@ -1,5 +1,5 @@
-const routes = {
+export const routes = {
   home: '/',
 };
 
-export default routes;
+export const baseApiUrl = 'https://volanty-price-api.herokuapp.com';

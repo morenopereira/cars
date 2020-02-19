@@ -1,4 +1,5 @@
 import api from '../services/api';
+import { baseApiUrl } from '../config/constants';
 
 const GET_MODELS_START = 'GET_MODELS_START';
 const GET_MODELS_SUCCESS = 'GET_MODELS_SUCCESS';
@@ -12,7 +13,7 @@ const INITIAL_STATE = {
 export const getModels = car => async dispatch => {
   dispatch({ type: GET_MODELS_START });
   try {
-    const { data } = await api(`/brands/${car.brand}/models`);
+    const { data } = await api(`${baseApiUrl}/brands/${car.brand}/models`);
 
     dispatch({ type: GET_MODELS_SUCCESS, payload: data });
   } catch (error) {

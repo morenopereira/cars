@@ -1,4 +1,5 @@
 import api from '../services/api';
+import { baseApiUrl } from '../config/constants';
 
 const GET_VERSIONS_START = 'GET_VERSIONS_START';
 const GET_VERSIONS_SUCCESS = 'GET_VERSIONS_SUCCESS';
@@ -14,7 +15,7 @@ export const getVersions = car => async dispatch => {
   dispatch({ type: GET_VERSIONS_START });
   try {
     const { data } = await api(
-      `/brands/${car.brand}/models/${car.model}/years/${car.year}/versions`,
+      `${baseApiUrl}/brands/${car.brand}/models/${car.model}/years/${car.year}/versions`,
     );
 
     dispatch({ type: GET_VERSIONS_SUCCESS, payload: data });
