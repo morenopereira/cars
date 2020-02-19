@@ -10,9 +10,8 @@ Example project of the consumption of an API, using React, SCSS Module and Docke
 
 ## Development
 
-1. `cp .env.default .env` (And alter vars as needed)
-2. `npm install` or `yarn`
-3. `npm start` or `yarn start`
+1. `npm install` or `yarn`
+2. `npm start` or `yarn start`
 
 ## Running the project on Docker
 
